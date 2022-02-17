@@ -11,7 +11,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 )
 
 camera.position.x = 200;
-camera.position.y = 75
+camera.position.y = 0
 
 
 
@@ -47,7 +47,7 @@ let boxGeometry = new THREE.BoxGeometry( 100, 100, 100);
 //CREATE SPHERE
 const moonTexture = new THREE.TextureLoader().load('moon.jpg')
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(1, 32, 16),
+  new THREE.SphereGeometry(10, 32, 16),
   new THREE.MeshBasicMaterial({
     map: moonTexture
   })
@@ -113,7 +113,7 @@ function animate() {
 	controls.update();
 	renderer.render( scene, camera );
 
-  moon.rotation.y += 0.05;
+  moon.rotation.y += 0.01;
   skybox.rotation.y += 0.005;
   
 }
