@@ -9,8 +9,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 // SETTING UP SCENE
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 )
-camera.position.set(0,0,0);
-camera.position.x = 1;
+
+camera.position.x = 200;
+camera.position.y = 75
 
 
 
@@ -113,7 +114,7 @@ function animate() {
 	renderer.render( scene, camera );
 
   moon.rotation.y += 0.05;
-  /* skybox.rotation.y += 0.01; */
+  skybox.rotation.y += 0.01;
   
 }
 
