@@ -1,6 +1,6 @@
 // Find the latest version by visiting https://cdn.skypack.dev/three
 import * as THREE from 'three';
-import { GridHelper } from 'three';
+import { GridHelper, Scene } from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 
@@ -21,16 +21,39 @@ document.body.appendChild( renderer.domElement );
 
 
 
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(0, 0, 0);
+scene.add(pointLight)
 
 
+//CREATE BOX
+let boxGeometry = new THREE.BoxGeometry( 100, 100, 100);
 
 
+//CREATE SPHERE
+const moonTexture = new THREE.TextureLoader().load('moon.jpg')
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(1, 32, 16),
+  new THREE.MeshBasicMaterial({
+    map: moonTexture
+  })
+);
+scene.add(moon);
+var t = 0;
+function render() { 
+    requestAnimationFrame(render); 
+    t += 0.01;          
 
+    moon.rotation.y += 0.001;
 
+    //SPHERE ORBIT
+    moon.position.x = 15*Math.cos(t) + (0,0,0);
+    moon.position.z = 15*Math.sin(t) + (0,0,0);
+    moon.position.y = 15*Math.sin(t) + (0,0,0);
 
-
-
-
+    renderer.render(scene, camera); 
+} 
+render();
 
 
 
@@ -59,7 +82,7 @@ materialArray.push(new THREE.MeshBasicMaterial( { map: texture_lf }));
 for (let i = 0; i < 6; i++)
   materialArray[i].side = THREE.BackSide;
    
-let boxGeometry = new THREE.BoxGeometry( 100, 100, 100);
+
 let skybox = new THREE.Mesh( boxGeometry, materialArray );
 scene.add( skybox );
 animate();
@@ -69,6 +92,8 @@ function animate() {
 	requestAnimationFrame( animate );
 	controls.update();
 	renderer.render( scene, camera );
+
+  moon.rotation.y += 0.05;
 }
 
 
