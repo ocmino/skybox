@@ -26,6 +26,8 @@ pointLight.position.set(0, 0, 0);
 scene.add(pointLight)
 
 
+
+
 //CREATE BOX
 let boxGeometry = new THREE.BoxGeometry( 100, 100, 100);
 
@@ -47,9 +49,9 @@ function render() {
     moon.rotation.y += 0.001;
 
     //SPHERE ORBIT
-    moon.position.x = 15*Math.cos(t) + (0,0,0);
-    moon.position.z = 15*Math.sin(t) + (0,0,0);
-    moon.position.y = 15*Math.sin(t) + (0,0,0);
+    moon.position.x = 25*Math.cos(t) + (0,0,0);
+    moon.position.z = 25*Math.sin(t) + (0,0,0);
+    moon.position.y = 25*Math.sin(t) + (0,0,0);
 
     renderer.render(scene, camera); 
 } 
@@ -65,12 +67,12 @@ const controls = new OrbitControls( camera, renderer.domElement );
 
 // CREATING BOX AND APPLYING PICTURES
 let materialArray = [];
-let texture_ft = new THREE.TextureLoader().load( 'meadow_ft.jpg');
-let texture_bk = new THREE.TextureLoader().load( 'meadow_bk.jpg');
-let texture_up = new THREE.TextureLoader().load( 'meadow_up.jpg');
-let texture_dn = new THREE.TextureLoader().load( 'meadow_dn.jpg');
-let texture_rt = new THREE.TextureLoader().load( 'meadow_rt.jpg');
-let texture_lf = new THREE.TextureLoader().load( 'meadow_lf.jpg');
+let texture_ft = new THREE.TextureLoader().load( 'cocoa_ft.jpg');
+let texture_bk = new THREE.TextureLoader().load( 'cocoa_bk.jpg');
+let texture_up = new THREE.TextureLoader().load( 'cocoa_up.jpg');
+let texture_dn = new THREE.TextureLoader().load( 'cocoa_dn.jpg');
+let texture_rt = new THREE.TextureLoader().load( 'cocoa_rt.jpg');
+let texture_lf = new THREE.TextureLoader().load( 'cocoa_lf.jpg');
   
 materialArray.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
 materialArray.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
