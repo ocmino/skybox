@@ -85,12 +85,12 @@ const controls = new OrbitControls( camera, renderer.domElement );
 
 // CREATING BOX AND APPLYING PICTURES
 let materialArray = [];
-let texture_ft = new THREE.TextureLoader().load( 'meadow_ft.jpg');
-let texture_bk = new THREE.TextureLoader().load( 'meadow_bk.jpg');
-let texture_up = new THREE.TextureLoader().load( 'meadow_up.jpg');
-let texture_dn = new THREE.TextureLoader().load( 'meadow_dn.jpg');
-let texture_rt = new THREE.TextureLoader().load( 'meadow_rt.jpg');
-let texture_lf = new THREE.TextureLoader().load( 'meadow_lf.jpg');
+let texture_ft = new THREE.TextureLoader().load( 'mystic_ft.jpg');
+let texture_bk = new THREE.TextureLoader().load( 'mystic_bk.jpg');
+let texture_up = new THREE.TextureLoader().load( 'mystic_up.jpg');
+let texture_dn = new THREE.TextureLoader().load( 'mystic_dn.jpg');
+let texture_rt = new THREE.TextureLoader().load( 'mystic_rt.jpg');
+let texture_lf = new THREE.TextureLoader().load( 'mystic_lf.jpg');
   
 materialArray.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
 materialArray.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
