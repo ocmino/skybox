@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { GridHelper, Scene } from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 
 
@@ -22,14 +22,25 @@ document.body.appendChild( renderer.domElement );
 
 
 const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(0, 0, 0);
+const lightHelper = new THREE.PointLightHelper(pointLight)
+pointLight.position.set(45, 25, -45);
 scene.add(pointLight)
+const ambientLight = new THREE.AmbientLight(0x404040);
+scene.add(pointLight, ambientLight);
+
+
 
 
 
 
 //CREATE BOX
 let boxGeometry = new THREE.BoxGeometry( 100, 100, 100);
+
+
+
+
+
+
 
 
 //CREATE SPHERE
@@ -51,11 +62,17 @@ function render() {
     //SPHERE ORBIT
     moon.position.x = 25*Math.cos(t) + (0,0,0);
     moon.position.z = 25*Math.sin(t) + (0,0,0);
-    moon.position.y = 25*Math.sin(t) + (0,0,0);
+    moon.position.y = 15*Math.sin(t) + (0,0,0);
 
     renderer.render(scene, camera); 
 } 
 render();
+
+
+
+
+
+
 
 
 
@@ -67,12 +84,12 @@ const controls = new OrbitControls( camera, renderer.domElement );
 
 // CREATING BOX AND APPLYING PICTURES
 let materialArray = [];
-let texture_ft = new THREE.TextureLoader().load( 'cocoa_ft.jpg');
-let texture_bk = new THREE.TextureLoader().load( 'cocoa_bk.jpg');
-let texture_up = new THREE.TextureLoader().load( 'cocoa_up.jpg');
-let texture_dn = new THREE.TextureLoader().load( 'cocoa_dn.jpg');
-let texture_rt = new THREE.TextureLoader().load( 'cocoa_rt.jpg');
-let texture_lf = new THREE.TextureLoader().load( 'cocoa_lf.jpg');
+let texture_ft = new THREE.TextureLoader().load( 'meadow_ft.jpg');
+let texture_bk = new THREE.TextureLoader().load( 'meadow_bk.jpg');
+let texture_up = new THREE.TextureLoader().load( 'meadow_up.jpg');
+let texture_dn = new THREE.TextureLoader().load( 'meadow_dn.jpg');
+let texture_rt = new THREE.TextureLoader().load( 'meadow_rt.jpg');
+let texture_lf = new THREE.TextureLoader().load( 'meadow_lf.jpg');
   
 materialArray.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
 materialArray.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
@@ -96,6 +113,8 @@ function animate() {
 	renderer.render( scene, camera );
 
   moon.rotation.y += 0.05;
+  /* skybox.rotation.y += 0.01; */
+  
 }
 
 
