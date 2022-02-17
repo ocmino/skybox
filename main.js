@@ -9,7 +9,9 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 // SETTING UP SCENE
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 )
-camera.position.set(-900,-200,-900);
+camera.position.set(0,0,0);
+camera.position.x = 1;
+
 
 
 const renderer = new THREE.WebGLRenderer();
@@ -24,7 +26,7 @@ document.body.appendChild( renderer.domElement );
 
 
 
-camera.position.z = 5;
+
 
 
 
@@ -34,6 +36,7 @@ camera.position.z = 5;
 
 // CONTROLS
 const controls = new OrbitControls( camera, renderer.domElement );
+
 
 
 
